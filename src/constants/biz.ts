@@ -1,3 +1,5 @@
+import i18n from "@/utils/i18next";
+
 export const KAKAO_AUTH_URL = "https://kauth.kakao.com/oauth/authorize";
 export const KAKAO_AUTH_CLIENT_ID = "6f1bf601d05a1a7865a14c8a7815f77a";
 export const KAKAO_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/kakao";
@@ -11,3 +13,18 @@ export const GOOGLE_AUTH_CLIENT_ID =
 export const GOOGLE_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/google";
 export const GOOGLE_AUTH_SCOPE =
   "https://www.googleapis.com/auth/userinfo.email";
+
+export const TERMS_LABEL: { required: boolean; label: string }[] = [
+  {
+    required: true,
+    label: i18n.t(`signup.terms.label1`),
+  },
+  {
+    required: true,
+    label: i18n.t(`signup.terms.label2`),
+  },
+  {
+    required: true,
+    label: i18n.t(`signup.terms.label3`),
+  },
+];

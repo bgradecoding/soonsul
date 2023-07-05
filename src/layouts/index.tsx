@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Centered from "@/layouts/centered";
 import Basic from "@/layouts/basic";
+import BottomMenu from "./bottomMenu";
+
 export type LayoutProps = {
   children: React.ReactNode;
 };
@@ -32,6 +34,8 @@ const Layouts: React.FC<LayoutProps> = ({ children }) => {
     case "/login-3":
     case "/photo":
       return <>{children}</>;
+    case "/main":
+      return <BottomMenu>{children}</BottomMenu>;
     default:
       return <Basic>{children}</Basic>;
   }

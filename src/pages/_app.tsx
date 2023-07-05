@@ -1,8 +1,12 @@
 import "@/styles/globals.css";
+import "@/utils/i18next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Layouts from "@/layouts";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { queryClientConfig } from "@/utils/query";
 
+const queryClient = new QueryClient(queryClientConfig);
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -14,9 +18,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/img/favicon.svg" />
         <title>순술</title>
       </Head>
+      <QueryClientProvider client={queryClient}>
       <Layouts>
         <Component {...pageProps} />
       </Layouts>
+      </QueryClientProvider>
     </>
   );
 }

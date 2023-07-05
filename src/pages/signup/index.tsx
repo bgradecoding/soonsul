@@ -8,7 +8,9 @@ const SignupPage: React.FC = () => {
   const oauthIdString = oauthId as string;
   const oauthProviderString = oauthProvider as string;
 
-  return <AgreeTerms />;
+  return (
+    <AgreeTerms oauthId={oauthIdString} oauthProvider={oauthProviderString} />
+  );
 };
 
 export default SignupPage;

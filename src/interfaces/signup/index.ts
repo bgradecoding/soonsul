@@ -1,9 +1,9 @@
 export type SignupDto = {
-  age: 0 | 10 | 20 | 30 | 40 | 50 | 60;
+  age: null | 0;
   flagAge: boolean;
   flagPrivacy: boolean;
   flagTerms: boolean;
-  gender: "M" | "F" | "";
+  gender: null | "";
   oauthId: string;
   oauthProvider: string;
 };

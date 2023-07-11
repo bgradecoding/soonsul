@@ -14,11 +14,12 @@ const HeaderComponent: React.FC<Props> = ({ title, share = false }) => {
       </div>
 
       <div>{title}</div>
-      {share && (
+      {share ? (
         <div className="p-2">
-          {" "}
           <IconShare />
         </div>
+      ) : (
+        <div className="w-10 h-10 "></div>
       )}
     </div>
   );

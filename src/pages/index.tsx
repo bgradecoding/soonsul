@@ -18,7 +18,9 @@ const Home: React.FC = () => {
       className="flex items-center justify-center"
       style={{ height: height }}
     >
-      <Image src={"/img/favicon.svg"} alt="logo" width={120} height={120} />
+      {height && (
+        <Image src={"/img/favicon.svg"} alt="logo" width={120} height={120} />
+      )}
     </div>
   );
 };

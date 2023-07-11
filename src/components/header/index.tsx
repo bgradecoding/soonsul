@@ -8,10 +8,18 @@ type Props = {
 
 const HeaderComponent: React.FC<Props> = ({ title, share = false }) => {
   return (
-    <div className="flex items-center justify-between">
-      <IconArrowBack />
+    <div className="flex items-center justify-between h-12 px-2 border-b border-gray-300 b-1">
+      <div className="p-2">
+        <IconArrowBack />
+      </div>
+
       <div>{title}</div>
-      {share && <IconShare />}
+      {share && (
+        <div className="p-2">
+          {" "}
+          <IconShare />
+        </div>
+      )}
     </div>
   );
 };

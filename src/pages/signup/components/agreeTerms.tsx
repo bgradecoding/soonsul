@@ -8,7 +8,6 @@ import BottomButtom from "@/components/buttons/bottomButton";
 import { useTranslation } from "react-i18next";
 import { usePostSignup } from "@/biz/signup";
 import { useRouter } from "next/router";
-import { SignupDto } from "@/interfaces/signup";
 
 type Props = {
   oauthId: string;

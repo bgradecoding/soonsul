@@ -7,12 +7,19 @@ import { SNSLoginRes } from "@/interfaces/auth";
 const GoogleLogin = () => {
   const router = useRouter();
   const { code } = router.query;
+
   const fetchGoogleLogin = async () => {
     try {
       const res = await api.get<SNSLoginRes>(authRouter.googleLogin, {
         code,
       });
-      console.log(res.data.code);
+      if (res.data.code) {
+        res.data.code === "A001"
+          ? router.push(
+              `/signup?oauthId=${res.data.data.oauthId}&oauthProvider=${res.data.data.oauthProvider}`
+            )
+          : router.push("/main");
+      }
     } catch (err) {
       console.log(err);
     }

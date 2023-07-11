@@ -28,14 +28,10 @@ const Layouts: React.FC<LayoutProps> = ({ children }) => {
     case "/500":
       return <Centered>{children}</Centered>;
     case "/":
-    case "/scheduleUpdate":
-    case "/landing":
-    case "/login-2":
-    case "/login-3":
-    case "/photo":
       return <>{children}</>;
     case "/main":
       return <BottomMenu>{children}</BottomMenu>;
+
     default:
       return <Basic>{children}</Basic>;
   }

@@ -14,17 +14,32 @@ export const GOOGLE_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/google";
 export const GOOGLE_AUTH_SCOPE =
   "https://www.googleapis.com/auth/userinfo.email";
 
-export const TERMS_LABEL: { required: boolean; label: string }[] = [
+export const TERMS_LABEL: {
+  required: boolean;
+  label: string;
+  link: string;
+}[] = [
   {
     required: true,
     label: i18n.t(`signup.terms.label1`),
+    link: "",
   },
   {
     required: true,
     label: i18n.t(`signup.terms.label2`),
+    link: "https://candy-pipe-112.notion.site/d517d2c8655548bc8d526ad50beb7ec1",
   },
   {
     required: true,
     label: i18n.t(`signup.terms.label3`),
+    link:
+      "https://candy-pipe-112.notion.site/73803f4fd51c48848489a9800b140016?pvs=4",
   },
 ];
+
+export const SHOT_STATUS = {
+  READY: "READY",
+  SHOOTING: "SHOOTING",
+  DONE: "DONE",
+  FAIL: "FAIL",
+};

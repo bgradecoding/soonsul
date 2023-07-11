@@ -1,13 +1,17 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Image from "next/image";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const Home: React.FC = () => {
   const router = useRouter();
   const { height } = useWindowDimensions();
-  setTimeout(() => {
-    router.push("/auth/login"); // /는 스플래쉬 페이지로 활용
-  }, 3000);
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/auth/login"); // /는 스플래쉬 페이지로 활용
+    }, 3000);
+  }, []);
 
   return (
     <div

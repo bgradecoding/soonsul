@@ -23,6 +23,7 @@ const Home: React.FC = () => {
           <Image src={"/img/favicon.svg"} alt="logo" width={120} height={120} />
           <div className="ani-up">
             <div className="wave-one" />
+            <div className="wave-two" />
           </div>
         </div>
       )}

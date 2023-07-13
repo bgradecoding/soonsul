@@ -66,9 +66,9 @@
   .wave-one {
     width: 400px;
     height: 400px;
-    border-radius: 45%;
+    border-radius: 32%;
     background: white;
-    animation: move 3s infinite linear;
+    animation: move 4s infinite linear;
   }
   .ani-up {
     position: absolute;
@@ -87,7 +87,7 @@
       bottom: 10%;
     }
     100% {
-      bottom: 100%;
+      bottom: 110%;
     }
   }
 }

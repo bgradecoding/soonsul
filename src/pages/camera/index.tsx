@@ -6,6 +6,7 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { SHOT_STATUS } from "@/constants/biz";
 import * as tmImage from "@teachablemachine/image";
 import { CustomMobileNet } from "@teachablemachine/image";
+import { useRouter } from "next/router";
 
 const predictUrl = "https://teachablemachine.withgoogle.com/models/QvUS73iKU/";
 
@@ -15,7 +16,7 @@ const CameraPage: React.FC = () => {
   const [status, setStatus] = useState("READY");
   const [capturedImage, setCapturedImage] = useState("");
   const { height } = useWindowDimensions();
-
+  const router = useRouter();
   let model: CustomMobileNet, maxPredictions: number;
 
   const init = async () => {
@@ -56,7 +57,7 @@ const CameraPage: React.FC = () => {
     // Output the prediction with the highest probability
     const bestClassPrediction =
       prediction[highestProbabilityIndex].className + ": " + highestProbability;
-    console.log("bestClassPrediction", bestClassPrediction);
+    router.push(`/detail?name=${bestClassPrediction}`);
   }
 
   const captureImage = () => {

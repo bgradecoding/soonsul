@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       router.push("/auth/login"); // /는 스플래쉬 페이지로 활용
-    }, 3000);
+    }, 4000);
   }, []);
 
   return (
@@ -19,7 +19,12 @@ const Home: React.FC = () => {
       style={{ height: height }}
     >
       {height && (
-        <Image src={"/img/favicon.svg"} alt="logo" width={120} height={120} />
+        <div className="relative overflow-hidden">
+          <Image src={"/img/favicon.svg"} alt="logo" width={120} height={120} />
+          <div className="ani-up">
+            <div className="wave-one" />
+          </div>
+        </div>
       )}
     </div>
   );

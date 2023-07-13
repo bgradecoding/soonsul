@@ -63,4 +63,31 @@
     font-weight: 500;
     font-size: 11px;
   }
+  .wave-one {
+    width: 400px;
+    height: 400px;
+    border-radius: 45%;
+    background: white;
+    animation: move 3s infinite linear;
+  }
+  .ani-up {
+    position: absolute;
+    bottom: 10%;
+    left: -100%;
+    animation: upGo 3s linear forwards;
+  }
+
+  @keyframes move {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes upGo {
+    0% {
+      bottom: 10%;
+    }
+    100% {
+      bottom: 100%;
+    }
+  }
 }

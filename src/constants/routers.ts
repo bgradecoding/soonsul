@@ -8,4 +8,9 @@ const authRouter = {
   appleLogin: "/auth/login/apple",
 } as const;
 
-export { authRouter };
+const liquorRouter = {
+  getScanResult: "/scan/liquor",
+  getLiquorDetail: "/liquors/{liquorId}/info",
+} as const;
+
+export { authRouter, liquorRouter };

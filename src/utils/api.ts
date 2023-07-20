@@ -23,10 +23,10 @@ export const api = {
 };
 
 axios.interceptors.response.use(
-  function (response) {
+  function(response) {
     return response;
   },
-  function (error) {
+  function(error) {
     if (error.response.status === 401) {
       LocalStorage.removeItem("accessToken");
       Router.push("/login");
@@ -36,9 +36,10 @@ axios.interceptors.response.use(
   }
 );
 
-axios.interceptors.request.use(function (config: any) {
+axios.interceptors.request.use(function(config: any) {
+  if (config.url.indexOf("/auth/login") > -1) return config;
   config.headers = {
-    Authorization: "Bearer " + LocalStorage.getItem("accessToken") || "",
+    Authorization: LocalStorage.getItem("accessToken") || "",
   };
   return config;
 });

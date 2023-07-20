@@ -2,18 +2,18 @@ import IconArrowBack from "../icons/arrow/back";
 import IconShare from "../icons/share";
 
 type Props = {
-  title: string;
+  title?: string;
   share?: boolean;
   onClick?: () => void;
 };
 
 const HeaderComponent: React.FC<Props> = ({
-  title,
+  title = "",
   share = false,
   onClick,
 }) => {
   return (
-    <div className="flex items-center justify-between h-12 px-2 border-b border-gray-300 b-1">
+    <div className="fixed top-0 flex items-center justify-between w-full h-12 px-2 bg-white border-b border-gray-300 b-1">
       <div className="p-2" onClick={onClick}>
         <IconArrowBack />
       </div>

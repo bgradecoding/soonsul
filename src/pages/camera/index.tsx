@@ -7,10 +7,13 @@ import { SHOT_STATUS } from "@/constants/biz";
 import * as tmImage from "@teachablemachine/image";
 import { CustomMobileNet } from "@teachablemachine/image";
 import { useRouter } from "next/router";
+import { useGetScan } from "@/biz/liquor";
 
 const predictUrl = "https://teachablemachine.withgoogle.com/models/QvUS73iKU/";
 
 const CameraPage: React.FC = () => {
+  const [nameDetail, setNameDetail] = useState<string>("");
+  useGetScan(nameDetail, (id: string) => router.push("/detail?id=" + id));
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [status, setStatus] = useState("READY");
@@ -55,9 +58,8 @@ const CameraPage: React.FC = () => {
     }
 
     // Output the prediction with the highest probability
-    const bestClassPrediction =
-      prediction[highestProbabilityIndex].className + ": " + highestProbability;
-    router.push(`/detail?name=${bestClassPrediction}`);
+    const bestClassPrediction = prediction[highestProbabilityIndex].className;
+    setNameDetail(bestClassPrediction);
   }
 
   const captureImage = () => {

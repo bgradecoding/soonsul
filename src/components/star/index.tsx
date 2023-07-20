@@ -8,7 +8,7 @@ const IconStar = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#BEBEBE"
+      fill={props.fill ? props.fill : "#BEBEBE"}
       d="m6 0 1.904 3.379 3.802.767L9.081 7l.446 3.853L6 9.24l-3.527 1.614.446-3.853L.294 4.146l3.802-.767L6 0Z"
     />
   </svg>

@@ -1,9 +1,10 @@
 import i18n from "@/utils/i18next";
+import { colors } from "./design";
 
 export const KAKAO_AUTH_URL = "https://kauth.kakao.com/oauth/authorize";
 export const KAKAO_AUTH_CLIENT_ID = "6f1bf601d05a1a7865a14c8a7815f77a";
-//export const KAKAO_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/kakao";
-export const KAKAO_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/kakao";
+export const KAKAO_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/kakao";
+//export const KAKAO_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/kakao";
 export const NAVER_AUTH_URL = "https://nid.naver.com/oauth2.0/authorize";
 export const NAVER_AUTH_CLIENT_ID = "ihxW45DrOs_EYtX35Oh8";
 export const NAVER_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/naver";
@@ -45,3 +46,35 @@ export const SHOT_STATUS = {
   DONE: "DONE",
   FAIL: "FAIL",
 };
+
+export const LIQUORCATEGORY = [
+  {
+    code: "L001",
+    name: i18n.t(`liquor.category.L001`),
+    color: colors.cheongju,
+  },
+  {
+    code: "L002",
+    name: i18n.t(`liquor.category.L002`),
+    color: colors.secondary,
+  },
+  {
+    code: "L003",
+    name: i18n.t(`liquor.category.L003`),
+    color: colors.primary,
+  },
+  {
+    code: "L004",
+    name: i18n.t(`liquor.category.L004`),
+    color: colors.cheongju,
+  },
+];
+
+export const EVALUTIONITEMS = [
+  "단맛",
+  "신맛",
+  "청량감",
+  "바디감",
+  "목넘김",
+  "향",
+];

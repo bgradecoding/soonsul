@@ -37,7 +37,11 @@ axios.interceptors.response.use(
 );
 
 axios.interceptors.request.use(function(config: any) {
-  if (config.url.indexOf("/auth/login") > -1) return config;
+  if (
+    config.url.indexOf("/auth/login") > -1 ||
+    config.url.indexOf("/signup") > -1
+  )
+    return config;
   config.headers = {
     Authorization: LocalStorage.getItem("accessToken") || "",
   };

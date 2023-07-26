@@ -1,5 +1,5 @@
 import Image from "next/image";
-import IconStar from "@/components/star";
+import IconStar from "@/components/icons/star";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { colors } from "@/constants/design";
 import { DetailRes } from "@/interfaces/liquor";

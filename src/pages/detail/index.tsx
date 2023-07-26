@@ -9,6 +9,7 @@ import ReviewContainer from "./components/reviewContainer";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useGetLiquorDetail } from "@/biz/liquor";
+import BottomArea from "./components/bottomArea";
 
 const DetailPage: React.FC = () => {
   const router = useRouter();
@@ -48,6 +49,13 @@ const DetailPage: React.FC = () => {
       <Evaluation />
       <Divider />
       <ReviewContainer />
+      <div className="mb-8" />
+      <BottomArea
+        liquorId={idDetail}
+        name={data?.data.name}
+        category={data?.code}
+        salePlace={"국순당"}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Head from "next/head";
 import Layouts from "@/layouts";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { queryClientConfig } from "@/utils/query";
-
+import CssBaseline from "@mui/material/CssBaseline";
 const queryClient = new QueryClient(queryClientConfig);
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>순술</title>
       </Head>
       <QueryClientProvider client={queryClient}>
+      <CssBaseline />
       <Layouts>
+        
         <Component {...pageProps} />
       </Layouts>
       </QueryClientProvider>

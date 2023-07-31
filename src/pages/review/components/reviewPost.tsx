@@ -24,7 +24,7 @@ const ReviewPost = ({
         maxLength={500}
       />
       <div className="text-right text-gray-500 la-3">
-        {reviewContent.length}/500
+        {String(reviewContent).length}/500
       </div>
     </div>
   );

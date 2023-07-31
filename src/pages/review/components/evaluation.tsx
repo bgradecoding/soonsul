@@ -6,7 +6,14 @@ import { useStarRating } from "@/hooks/useStarRating";
 import { colors } from "@/constants/design";
 import SliderComponent from "@/components/slider";
 const Evaluation = ({
-  evaluation,
+  evaluation = {
+    acidity: 0,
+    carbonicAcid: 0,
+    density: 0,
+    heavy: 0,
+    scent: 0,
+    sweetness: 0,
+  },
   setEvaluation,
 }: {
   evaluation: {

@@ -29,7 +29,7 @@ axios.interceptors.response.use(
   function(error) {
     if (error.response.status === 401) {
       LocalStorage.removeItem("accessToken");
-      Router.push("/login");
+      Router.push("/auth/login");
     }
 
     return Promise.reject(error.response.data);

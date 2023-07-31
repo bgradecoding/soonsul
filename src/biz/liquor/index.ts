@@ -1,7 +1,7 @@
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import { api } from "@/utils/api";
 import { ScanRes } from "@/interfaces/detail";
-import { DetailRes } from "@/interfaces/liquor";
+import { DetailRes, EvaluationReq } from "@/interfaces/liquor";
 import { liquorRouter } from "@/constants/routers";
 
 const fetchScanLiquor = async (name: string) => {
@@ -14,6 +14,14 @@ const fetchScanLiquor = async (name: string) => {
 const fetchLiquorDetail = async (id: string) => {
   const { data } = await api.get<DetailRes>(
     liquorRouter.getLiquorDetail.replace("{liquorId}", id)
+  );
+  return data;
+};
+
+const fetchLiquorEvaluation = async (params: EvaluationReq, id: string) => {
+  const { data } = await api.post<DetailRes>(
+    liquorRouter.postEvaluation.replace("{liquorId}", id),
+    params
   );
   return data;
 };
@@ -31,5 +39,14 @@ export const useGetLiquorDetail = (id: string) => {
   console.log(id);
   return useQuery(["liquorDetail", id], () => fetchLiquorDetail(id), {
     enabled: !!id,
+  });
+};
+
+export const usePostEvaluation = (params: EvaluationReq, id: string) => {
+  const queryClient = useQueryClient();
+  return useMutation(() => fetchLiquorEvaluation(params, id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["liquorDetail"]);
+    },
   });
 };

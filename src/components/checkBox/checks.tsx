@@ -26,12 +26,14 @@ const Checks: React.FunctionComponent<Props> = ({
             onChange={() => onCheck(idx)}
             label={label}
           />
-          <div
-            onClick={() => router.push(`${TERMS_LABEL[idx].link}`)}
-            className="text-gray-500 la-2"
-          >
-            {t("common.show")}
-          </div>
+          {TERMS_LABEL[idx].link !== "" && (
+            <div
+              onClick={() => router.push(`${TERMS_LABEL[idx].link}`)}
+              className="text-gray-500 la-2"
+            >
+              {t("common.show")}
+            </div>
+          )}
         </div>
       ))}
     </>

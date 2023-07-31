@@ -5,12 +5,38 @@ import Image from "next/image";
 import TagCategory from "@/components/tag/category";
 import Divider from "../detail/components/divider";
 import StarRank from "./components/starRank";
+import Evaluation from "./components/evaluation";
+import ReviewPost from "./components/reviewPost";
+import BottomButtom from "@/components/buttons/bottomButton";
+import { usePostEvaluation } from "@/biz/liquor";
 
 const ReviewPage: React.FC = () => {
   const router = useRouter();
   const { liquorId, name, category, salePlace } = router.query;
   const [idDetail, setIdDetail] = useState<string>("");
   const [categoryDetail, setCategoryDetail] = useState<string>("");
+  const [reviewContent, setReviewContent] = useState<string>("");
+  const [liquorPersonalRating, setLiquorPersonalRating] = useState<number>(0);
+  const [evaluation, setEvaluation] = useState<{
+    acidity: number | number[];
+    carbonicAcid: number | number[];
+    density: number | number[];
+    heavy: number | number[];
+    scent: number | number[];
+    sweetness: number | number[];
+  }>({
+    acidity: 0,
+    carbonicAcid: 0,
+    density: 0,
+    heavy: 0,
+    scent: 0,
+    sweetness: 0,
+  });
+  const postEvaluationMutation = usePostEvaluation(
+    { liquorPersonalRating, reviewContent, ...evaluation },
+    idDetail
+  );
+
   useEffect(() => {
     if (liquorId) {
       setIdDetail(liquorId as string);
@@ -44,7 +70,25 @@ const ReviewPage: React.FC = () => {
         </div>
       </div>
       <Divider />
-      <StarRank />
+      <StarRank
+        liquorPersonalRating={liquorPersonalRating}
+        setLiquorPersonalRating={setLiquorPersonalRating}
+      />
+      <Divider />
+      <Evaluation evaluation={evaluation} setEvaluation={setEvaluation} />
+      <Divider />
+      <ReviewPost
+        reviewContent={reviewContent}
+        setReviewContent={setReviewContent}
+      />
+      <Divider />
+      <div className="pb-[56px]" />
+      <div className="fixed bottom-0 w-full">
+        <BottomButtom
+          text={"완료"}
+          onClick={() => postEvaluationMutation.mutate()}
+        />
+      </div>
     </>
   );
 };

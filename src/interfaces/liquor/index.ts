@@ -27,3 +27,14 @@ interface Liquor {
   siteUrl: string;
   viewCount: number;
 }
+
+export interface EvaluationReq {
+  acidity: number | number[];
+  carbonicAcid: number | number[];
+  density: number | number[];
+  heavy: number | number[];
+  liquorPersonalRating: number;
+  reviewContent: string;
+  scent: number | number[];
+  sweetness: number | number[];
+}

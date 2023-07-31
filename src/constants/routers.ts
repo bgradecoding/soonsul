@@ -11,6 +11,7 @@ const authRouter = {
 const liquorRouter = {
   getScanResult: "/scan/liquor",
   getLiquorDetail: "/liquors/{liquorId}/info",
+  postEvaluation: "/liquors/{liquorId}/evaluation",
 } as const;
 
 export { authRouter, liquorRouter };

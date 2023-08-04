@@ -8,7 +8,7 @@ const IconArrowDown = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      fill="#8A8A8A"
+      fill={props.fill || "#8A8A8A"}
       d="m10.065 8.96.885-.885L6 3.125l-4.95 4.95.885.885L6 4.895l4.065 4.065Z"
     />
   </svg>

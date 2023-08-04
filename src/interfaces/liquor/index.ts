@@ -26,6 +26,7 @@ interface Liquor {
   salePlaceName: string;
   siteUrl: string;
   viewCount: number;
+  flagScrap: boolean;
 }
 
 export interface EvaluationReq {

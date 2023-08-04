@@ -5,9 +5,13 @@ interface Props {
   nickname?: string;
 }
 
-const Profile: React.FC<Props> = ({ src, reviewCount = 0, nickname = "" }) => {
+const Profile: React.FC<Props> = ({
+  src = "",
+  reviewCount = 0,
+  nickname = "",
+}) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center pb-4">
       <div className="pr-2 ">
         <AvatarComponent size={40} src={src} alt={""} />
       </div>

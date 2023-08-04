@@ -1,9 +1,5 @@
 import { useTranslation } from "react-i18next";
 import Title from "@/pages/detail/components/title";
-import { useState } from "react";
-import StarRate from "@/components/starRating/starRate";
-import { useStarRating } from "@/hooks/useStarRating";
-import { colors } from "@/constants/design";
 import SliderComponent from "@/components/slider";
 const Evaluation = ({
   evaluation = {

@@ -42,11 +42,46 @@ export const useGetLiquorDetail = (id: string) => {
   });
 };
 
-export const usePostEvaluation = (params: EvaluationReq, id: string) => {
+export const usePostEvaluation = (
+  params: EvaluationReq,
+  id: string,
+  fn: () => void
+) => {
   const queryClient = useQueryClient();
   return useMutation(() => fetchLiquorEvaluation(params, id), {
     onSuccess: () => {
       queryClient.invalidateQueries(["liquorDetail"]);
+      fn();
     },
   });
+};
+
+export const usePostScrap = (id: string) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    () =>
+      api.post<{ code: string; data: {}; message: string; status: number }>(
+        `/liquors/${id}/scrap`
+      ),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["liquorDetail"]);
+      },
+    }
+  );
+};
+
+export const useDeleteScrap = (id: string) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    () =>
+      api.delete<{ code: string; data: {}; message: string; status: number }>(
+        `/liquors/${id}/scrap`
+      ),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["liquorDetail"]);
+      },
+    }
+  );
 };

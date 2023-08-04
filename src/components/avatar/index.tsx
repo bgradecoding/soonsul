@@ -6,20 +6,15 @@ interface AvatarProps {
   size?: number;
 }
 
-const AvatarComponent: React.FC<AvatarProps> = ({ src, alt, size }) => {
+const AvatarComponent: React.FC<AvatarProps> = ({ src, alt, size = 40 }) => {
   return (
-    <div
-      style={{ width: size, height: size }}
-      className="overflow-hidden rounded-full "
-    >
-      <Image
-        src={src}
-        alt={alt}
-        width={size}
-        height={size}
-        className="object-cover rounded-full"
-      />
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className="h-10 rounded-full"
+    />
   );
 };
 

@@ -3,8 +3,8 @@ import { colors } from "./design";
 
 export const KAKAO_AUTH_URL = "https://kauth.kakao.com/oauth/authorize";
 export const KAKAO_AUTH_CLIENT_ID = "6f1bf601d05a1a7865a14c8a7815f77a";
-//export const KAKAO_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/kakao";
-export const KAKAO_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/kakao";
+export const KAKAO_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/kakao";
+//export const KAKAO_AUTH_REDIRECT_URI = "http://localhost:3001/oauth/kakao";
 export const NAVER_AUTH_URL = "https://nid.naver.com/oauth2.0/authorize";
 export const NAVER_AUTH_CLIENT_ID = "ihxW45DrOs_EYtX35Oh8";
 export const NAVER_AUTH_REDIRECT_URI = "https://soonsul.vercel.app/oauth/naver";
@@ -71,10 +71,10 @@ export const LIQUORCATEGORY = [
 ];
 
 export const EVALUTIONITEMS = [
-  "단맛",
-  "신맛",
-  "청량감",
-  "바디감",
-  "목넘김",
-  "향",
+  { text: "단맛", key: "" },
+  { text: "신맛", key: "" },
+  { text: "청량감", key: "" },
+  { text: "바디감", key: "" },
+  { text: "목넘김", key: "" },
+  { text: "향", key: "" },
 ];

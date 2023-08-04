@@ -14,4 +14,29 @@ const liquorRouter = {
   postEvaluation: "/liquors/{liquorId}/evaluation",
 } as const;
 
-export { authRouter, liquorRouter };
+const evaluationRouter = {
+  getEvaluation: "/liquors/{liquorId}/evaluation/check",
+  getAverEval: "/liquors/{liquorId}/flavor-evaluation/average",
+  getMyEval: "/liquors/{liquorId}/flavor-evaluation/person",
+} as const;
+
+const reviewRouter = {
+  getReviewLatest: "/liquors/{liquorId}/reviews/latest",
+  getReviewRating: "/liquors/{liquorId}/reviews/rating",
+  getReview: "/liquors/reviews/{reviewId}",
+  getComments: "/liquors/reviews/{reviewId}/comments",
+} as const;
+
+const commentRouter = {
+  postComment: "/liquors/reviews/{reviewId}/comment",
+  postReComment: "/liquors/re-comments/{upperCommentId}",
+  deleteComment: "/liquors/reviews/{reviewId}/comments/{commentId}",
+} as const;
+
+export {
+  authRouter,
+  liquorRouter,
+  evaluationRouter,
+  reviewRouter,
+  commentRouter,
+};

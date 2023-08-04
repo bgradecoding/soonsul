@@ -1,14 +1,22 @@
-export interface ReviewList {
-  reviewId: 0;
-  averageRating: 0;
-  content: "string";
-  goodNumber: 0;
-  createdDate: "string";
-  commentNumber: 0;
-  userId: 0;
-  nickname: "string";
-  profileImage: "string";
-  reviewNumber: 0;
+export interface IReviewListRes {
+  data: ReviewMain[];
+  message: string;
+  status: number;
+  code: string;
+}
+
+export interface IReviewRes {
+  data: ReviewMain;
+  message: string;
+  status: number;
+  code: string;
+}
+
+export interface IReviewCommentListRes {
+  data: ReviewComment[];
+  message: string;
+  status: number;
+  code: string;
 }
 
 export interface ReviewMain {
@@ -22,4 +30,17 @@ export interface ReviewMain {
   nickname: string;
   profileImage: string;
   reviewNumber: number;
+}
+
+export interface ReviewComment {
+  userId: number;
+  nickname: string;
+  profileImage: string;
+  reviewId: number;
+  commentId: number;
+  content: string;
+  createdDate: string;
+  good: number;
+  upperCommentNickname: string;
+  flagMySelf: boolean;
 }

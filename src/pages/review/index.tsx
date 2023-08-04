@@ -34,7 +34,8 @@ const ReviewPage: React.FC = () => {
   });
   const postEvaluationMutation = usePostEvaluation(
     { liquorPersonalRating, reviewContent, ...evaluation },
-    idDetail
+    idDetail,
+    () => router.push("/detail?id=" + idDetail)
   );
 
   useEffect(() => {

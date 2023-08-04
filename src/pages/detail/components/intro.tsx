@@ -4,20 +4,21 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { colors } from "@/constants/design";
 import { DetailRes } from "@/interfaces/liquor";
 import { financial, formatNumber } from "@/utils/form";
+import StarRate from "@/components/starRating/starRate";
 interface IntroProps {
   data?: DetailRes;
 }
 
 const Intro: React.FC<IntroProps> = ({ data }) => {
-  const arrayd = [1, 2, 3, 4, 5];
   const { width } = useWindowDimensions();
   return (
     <div className="flex ">
-      <div className="p-2">
+      <div className="object-cover py-2 pl-10 pr-2">
         <Image
           //TODO: 이미지 경로 수정
-          src={"https://thumb.mt.co.kr/06/2021/11/2021111911385598861_1.jpg"}
+          src="/img/10.png"
           alt="logo"
+          className=""
           width={156}
           height={248}
         />
@@ -30,30 +31,25 @@ const Intro: React.FC<IntroProps> = ({ data }) => {
           <div className="pb-6 text-center">
             <div className="flex justify-center pb-1 la-2 text-primary">
               <div className="">내 평점</div>
-              <div className="font-bold ">5.0</div>
+              <div className="font-bold ">
+                {data?.data.liquorPersonalRating}
+              </div>
             </div>
 
             <div className="pb-1 text-gray-600 sl-3">
               {financial(data?.data.averageRating + "", 1)}
             </div>
             <div className="flex justify-center pb-1">
-              {Array(data?.data.averageRating)
-                .fill(0)
-                .map((_, index) => (
-                  <IconStar
-                    key={index}
-                    width={12}
-                    height={11}
-                    fill={colors.primary}
-                  />
-                ))}
-              {Array(
-                5 - (data?.data.averageRating ? data?.data.averageRating : 0)
-              )
-                .fill(0)
-                .map((_, index) => (
-                  <IconStar key={index} width={12} height={11} />
-                ))}
+              <StarRate
+                now={
+                  data?.data.averageRating ? data?.data.averageRating * 10 : 0
+                }
+                max={50}
+                maximumStars={5}
+                sstarsize="1rem"
+                sstarcolor={colors.primary}
+                sbackgroundcolor={colors.grey[400]}
+              />
             </div>
             <div className="text-gray-500 la-2">{`${data?.data.ratingNumber}개 평가`}</div>
           </div>

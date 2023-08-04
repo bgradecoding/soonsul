@@ -17,7 +17,7 @@ const DetailPage: React.FC = () => {
   const [idDetail, setIdDetail] = useState<string>("");
 
   const { data, isLoading, isError } = useGetLiquorDetail(idDetail);
-  //const data = { data: { name: "", ingredient: "" }, code: "" };
+
   useEffect(() => {
     if (id) {
       setIdDetail(id as string);
@@ -32,7 +32,7 @@ const DetailPage: React.FC = () => {
         onClick={() => router.push("/camera")}
       />
       <div className="pt-4 mt-12" />
-      <Intro data={data} />
+      {data && <Intro data={data} />}
       {/*<Intro data={undefined} />*/}
       <div className="p-4">
         <Info
@@ -46,12 +46,13 @@ const DetailPage: React.FC = () => {
       <Divider />
       <SalePlace />
       <Divider />
-      <Evaluation />
+      <Evaluation liquorId={idDetail} />
       <Divider />
-      <ReviewContainer />
+      <ReviewContainer liquorId={idDetail} />
       <div className="mb-8" />
       <BottomArea
         liquorId={idDetail}
+        scrap={data?.data.flagScrap}
         name={data?.data.name}
         category={data?.code}
         salePlace={"국순당"}

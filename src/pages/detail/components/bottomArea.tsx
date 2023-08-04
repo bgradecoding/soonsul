@@ -1,31 +1,47 @@
 import IconBookmarkOutline from "@/components/icons/bookmark/outline";
 import IconBookmarkFill from "@/components/icons/bookmark/fill";
 import { useRouter } from "next/router";
+import { useGetEval } from "@/biz/evaluation";
+import { usePostScrap, useDeleteScrap } from "@/biz/liquor";
 interface BottomAreaProps {
-  evaluationYn?: boolean;
-  bookmarkYn?: boolean;
   liquorId: string;
   name?: string;
   category?: string;
   salePlace?: string;
+  scrap?: boolean;
 }
 
 const BottomArea: React.FC<BottomAreaProps> = ({
-  evaluationYn = false,
-  bookmarkYn = false,
   liquorId,
   name,
   category,
   salePlace,
+  scrap,
 }) => {
   const router = useRouter();
+  const { data, isLoading, isError } = useGetEval(liquorId);
+  const scrapMutation = usePostScrap(liquorId);
+  const deleteScrapMutation = useDeleteScrap(liquorId);
+
+  const scrapClick = async () => {
+    if (scrap) {
+      await deleteScrapMutation.mutateAsync();
+    } else {
+      await scrapMutation.mutateAsync();
+    }
+  };
+
   return (
     <div className="fixed bottom-0 p-2 h-[56px] bg-white w-full">
       <div className="flex">
         <div className="flex items-center p-2 mr-2">
-          {bookmarkYn ? <IconBookmarkFill /> : <IconBookmarkOutline />}
+          {scrap ? (
+            <IconBookmarkFill onClick={() => scrapClick()} />
+          ) : (
+            <IconBookmarkOutline onClick={() => scrapClick()} />
+          )}
         </div>
-        {evaluationYn ? (
+        {data?.data ? (
           <>
             <button
               onClick={() =>
@@ -33,7 +49,7 @@ const BottomArea: React.FC<BottomAreaProps> = ({
                   `/review?liquorId=${liquorId}&name=${name}&category=${category}&salePlace=${salePlace}`
                 )
               }
-              className="flex-1 h-full font-bold text-center text-white bg-yellow-500"
+              className="flex-1 h-10 font-bold text-center border rounded-lg la-1 border-primary text-primary"
             >
               내 평가 수정하기
             </button>
@@ -46,7 +62,7 @@ const BottomArea: React.FC<BottomAreaProps> = ({
                   `/review?liquorId=${liquorId}&name=${name}&category=${category}&salePlace=${salePlace}`
                 )
               }
-              className="flex-1 h-10 font-bold text-center text-white rounded-lg bg-primary"
+              className="flex-1 h-10 font-bold text-center text-white rounded-lg la-1 bg-primary"
             >
               평가하기
             </button>

@@ -1,7 +1,16 @@
+import Banner from "./components/banner";
+import { EmblaOptionsType } from "embla-carousel-react";
+import LoveLiquor from "./components/loveLiquor";
+
 const MainPage: React.FC = () => {
+  const SLIDE_COUNT = 3;
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+  const OPTIONS: EmblaOptionsType = {};
   return (
     <div>
-      <h1>MainPage</h1>
+      <Banner slides={SLIDES} options={OPTIONS} />
+      <div className="pb-2" />
+      <LoveLiquor />
     </div>
   );
 };

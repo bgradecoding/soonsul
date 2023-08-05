@@ -107,3 +107,42 @@
     }
   }
 }
+
+.embla__dot {
+  background-color: #dfdbdb;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.embla__dots {
+  z-index: 10;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  margin-right: 0.75rem;
+}
+.embla__dot:after {
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+.embla__dot--selected:after {
+  background-color: rgb(242, 240, 240);
+}

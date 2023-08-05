@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 type PropType = PropsWithChildren<
   React.DetailedHTMLProps<
@@ -7,7 +7,7 @@ type PropType = PropsWithChildren<
   >
 >;
 
-export const DotButton: React.FC<PropType> = (props) => {
+const DotButton: React.FC<PropType> = (props) => {
   const { children, ...restProps } = props;
 
   return (
@@ -16,6 +16,7 @@ export const DotButton: React.FC<PropType> = (props) => {
     </button>
   );
 };
+export default DotButton;
 
 export const PrevButton: React.FC<PropType> = (props) => {
   const { children, ...restProps } = props;

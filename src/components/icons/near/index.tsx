@@ -8,8 +8,11 @@ const IconNear = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <g clipPath="url(#a)">
-      <path fill="#FEFEFE" d="M0 0h24v24H0V0Z" />
-      <path fill="#1AC6A9" d="M21 3 3 10.53v.98l6.84 2.65L12.48 21h.98L21 3Z" />
+      <path fill={"#1AC6A9"} d="M0 0h24v24H0V0Z" />
+      <path
+        fill={props.fill || "#1AC6A9"}
+        d="M21 3 3 10.53v.98l6.84 2.65L12.48 21h.98L21 3Z"
+      />
     </g>
     <defs>
       <clipPath id="a">

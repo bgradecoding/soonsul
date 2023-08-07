@@ -5,6 +5,8 @@ export interface SNSLoginRes {
     refreshToken: string;
     oauthId: string;
     oauthProvider: string;
+    nickname: string;
+    profileImage: string;
   };
   message: string;
   status: number;

@@ -10,11 +10,13 @@ const fetchSignup = async (signupDto: SignupDto) => {
   return data;
 };
 
-export const usePostSignup = (callbackFn: () => void) => {
+export const usePostSignup = (
+  callbackFn: (nickname: string, profileImage: string) => void
+) => {
   return useMutation((data: SignupDto) => fetchSignup(data), {
     onSuccess: (result) => {
       saveToken(result.data.accessToken, result.data.refreshToken);
-      callbackFn();
+      callbackFn(result.data.nickname, result.data.profileImage);
     },
   });
 };

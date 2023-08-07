@@ -8,6 +8,7 @@ import BottomButtom from "@/components/buttons/bottomButton";
 import { useTranslation } from "react-i18next";
 import { usePostSignup } from "@/biz/signup";
 import { useRouter } from "next/router";
+import useUserStore from "@/store/user";
 
 type Props = {
   oauthId: string;
@@ -16,14 +17,21 @@ type Props = {
 
 const AgreeTerms: React.FC<Props> = ({ oauthId, oauthProvider }) => {
   const [isOpen, closeModal] = useState(true);
+  const { setUserInfo } = useUserStore();
   const [isAllAgree, setAllAgree] = useState(false);
   const labels = convertToArrayForCheckbox(TERMS_LABEL);
   const [isAllChecked, renderChecks] = useChecks(labels, isAllAgree);
   const { t } = useTranslation();
   const router = useRouter();
-  const postSignupMutation = usePostSignup(() => {
-    router.push("/main");
-  });
+  const postSignupMutation = usePostSignup(
+    (nickname: string, profileImage: string) => {
+      router.push("/main");
+      setUserInfo({
+        nickname: nickname,
+        profileImage: profileImage,
+      });
+    }
+  );
   const onSubmit = () => {
     postSignupMutation.mutate({
       age: 0,

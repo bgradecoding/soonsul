@@ -1,7 +1,7 @@
 import IconNear from "@/components/icons/near";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import Image from "next/image";
-
+import IconArrowDown from "@/components/icons/arrow/down";
 const promotion = [
   "수도권",
   "강원도",
@@ -25,7 +25,13 @@ const Promotion: React.FC = () => {
   const { width } = useWindowDimensions();
   return (
     <div className="p-4">
-      <div className="text-xs font-bold ">이달의 프로모션</div>
+      <div className="flex justify-between">
+        <div className="text-xs font-bold ">이달의 프로모션</div>
+        <div className="flex items-center">
+          <div className="text-gray-500 la-3">더보기</div>
+          <IconArrowDown transform="rotate(90)" width={12} height={12} />
+        </div>
+      </div>
       <div className="pb-4 " />
       <div className="w-full">
         <div

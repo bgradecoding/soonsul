@@ -26,10 +26,34 @@ axios.interceptors.response.use(
   function(response) {
     return response;
   },
-  function(error) {
+  async function(error) {
     if (error.response.status === 401) {
-      LocalStorage.removeItem("accessToken");
-      Router.push("/auth/login");
+      // 401: Unauthorized
+      // localStorage에서 refreshToken을 가져와서 재발급 요청
+      // 재발급 요청이 실패하면 로그인 페이지로 이동
+      // 재발급 요청이 성공하면 accessToken을 localStorage에 저장하고
+      // 요청했던 API를 다시 요청
+      try {
+        const originalRequest = error.config;
+        LocalStorage.removeItem("accessToken");
+        const refreshToken = LocalStorage.getItem("refreshToken");
+        const result = await api.post(
+          "/auth/refresh",
+          {
+            refreshToken,
+          },
+          { refreshToken }
+        );
+        LocalStorage.setItem("accessToken", result.headers.authorization);
+        if (result) {
+          return await axios.request(originalRequest);
+        } else {
+          Router.push("/login");
+        }
+      } catch (e) {
+        Router.push("/login");
+        return Promise.reject(error);
+      }
     }
 
     return Promise.reject(error.response.data);

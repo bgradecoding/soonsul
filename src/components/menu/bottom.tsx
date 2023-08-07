@@ -14,7 +14,11 @@ const MenuBottom: React.FC = () => {
           className="flex justify-center "
           style={{ width: ((width ? width : 0) - 72) / 2 }}
         >
-          <IconSearch width={32} height={32} />
+          <IconSearch
+            width={32}
+            height={32}
+            onClick={() => router.push("/search")}
+          />
         </div>
         <div
           onClick={() => router.push("/camera")}
@@ -27,7 +31,11 @@ const MenuBottom: React.FC = () => {
             className="flex justify-center cursor-pointer "
             style={{ width: ((width ? width : 0) - 72) / 2 }}
           >
-            <IconUser width={32} height={32} />
+            <IconUser
+              width={32}
+              height={32}
+              onClick={() => router.push("/mypage")}
+            />
           </div>
         </div>
       </div>

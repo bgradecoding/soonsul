@@ -26,7 +26,7 @@ const MenuBottom: React.FC = () => {
         >
           <IconBottomCamera width={40} height={40} />
         </div>
-        <div onClick={() => router.push("/")} className="">
+        <div className="">
           <div
             className="flex justify-center cursor-pointer "
             style={{ width: ((width ? width : 0) - 72) / 2 }}

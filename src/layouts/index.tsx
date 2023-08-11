@@ -30,6 +30,7 @@ const Layouts: React.FC<LayoutProps> = ({ children }) => {
     case "/":
       return <>{children}</>;
     case "/main":
+    case "/mypage":
       return <BottomMenu>{children}</BottomMenu>;
 
     default:

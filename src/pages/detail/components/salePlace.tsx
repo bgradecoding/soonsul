@@ -2,7 +2,7 @@ import Title from "./title";
 import { useTranslation } from "react-i18next";
 import IconNear from "@/components/icons/near";
 import ButtonFill from "@/components/buttons/fill";
-
+import { colors } from "@/constants/design";
 interface SalePlaceProps {
   salePlace?: string[];
 }
@@ -18,7 +18,7 @@ const SalePlace: React.FC<SalePlaceProps> = ({
       <div className="flex items-center justify-between">
         <div className="flex ">
           <div className="pr-[7px]">
-            <IconNear />
+            <IconNear fill={colors.primary} fill2="white" />
           </div>
           {salePlace &&
             salePlace.map((item, index) => {

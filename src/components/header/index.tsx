@@ -13,7 +13,7 @@ const HeaderComponent: React.FC<Props> = ({
   onClick,
 }) => {
   return (
-    <div className="fixed top-0 flex items-center justify-between w-full h-12 px-2 bg-white border-b border-gray-300 b-1">
+    <div className="fixed top-0 left-0 flex items-center justify-between w-full h-12 px-2 bg-white border-b border-gray-300 b-1">
       <div className="p-2" onClick={onClick}>
         <IconArrowBack />
       </div>

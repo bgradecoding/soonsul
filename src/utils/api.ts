@@ -48,10 +48,10 @@ axios.interceptors.response.use(
         if (result) {
           return await axios.request(originalRequest);
         } else {
-          Router.push("/login");
+          Router.push("/auth/login");
         }
       } catch (e) {
-        Router.push("/login");
+        Router.push("/auth/login");
         return Promise.reject(error);
       }
     }

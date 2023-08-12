@@ -3,6 +3,7 @@ export const colors = {
   secondary: "#2D68C4",
   neutral: "#666666",
   cheongju: "#3EB1C8",
+  error: "#F61717",
   grey: {
     100: "#FAFAFA",
     200: "#F7F7F7",

@@ -3,11 +3,13 @@ import Image from "next/image";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { colors } from "@/constants/design";
+import { useRouter } from "next/router";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Profile: React.FC = () => {
   const { userInfo } = useUserStore();
   const { width } = useWindowDimensions();
+  const router = useRouter();
   return (
     <div className="flex items-center p-4" style={{ width: width }}>
       {userInfo?.profileImage ? (
@@ -25,7 +27,10 @@ const Profile: React.FC = () => {
           {userInfo?.nickname || "닉네임"}
         </div>
       </div>
-      <div className="flex items-center pl-1">
+      <div
+        className="flex items-center pl-1"
+        onClick={() => router.push("/mypage/updateProfile")}
+      >
         <BorderColorIcon sx={{ color: colors.primary, fontSize: 15 }} />
       </div>
     </div>
